@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Web Tech lab 5</title>
+        <style>
+            body{
+                background-image: url("https://media.istockphoto.com/photos/wooden-english-letters-background-picture-id838218772?k=20&m=838218772&s=612x612&w=0&h=_VF8VFrGiXs_0R9BB3zGFbSBkhT12jnpjMHvycZjI1U=");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .navbar{
+                width: 100%;
+            }
+            .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: lightblue;
+            }
+
+            .navbar li {
+                width: auto;
+                float: left;
+                
+            }
+
+            .navbar li a {
+            display: flex;
+            align-items: center ;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            }
+
+            .navbar li a:hover {
+            background-color: #111;
+            }
+
+            .spacer{
+                height: 25px;
+                background-color: white;
+            }
+            /* string */
+            /*.strin{
+                background-color: blue;
+                height: 600px;
+            }*/
+
+            .upcontainer {
+                width: 50%;
+                padding: 300px;
+                padding-top: 150px;
+            }
+
+            input[type=text],
+            input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+            /*set a style for the buttons*/
+            
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+            /* set a hover effect for the button*/
+            
+            button:hover {
+                opacity: 0.8;
+            }
+
+            /* bmi */
+            .bmic{
+                height: 600px;
+                background-image: url("https://c8.alamy.com/comp/2GGJXN1/bmi-and-weight-loss-banner-background-2GGJXN1.jpg");
+            }
+
+            /* fruitfarm */
+            .farm{
+                height: 600;
+                background-image: url("https://m.media-amazon.com/images/I/615Cqgbo8wL._SL1000_.jpg");
+                background-size: cover;
+            }
+
+            /* currency convertor */
+            .currency{
+                height: 600;
+                background-image: url("https://media.istockphoto.com/photos/world-currency-exchange-table-graph-picture-id818517624?b=1&k=20&m=818517624&s=170667a&w=0&h=gLQvl9TxxbX2368p-yw4jnNIebhGzYd7NO4wdzKuM-U=");
+                background-size: cover;
+            }
+
+            /* coin flip */
+            .coin{
+                background-image: url("https://image.shutterstock.com/image-photo/hand-flip-coin-isolated-on-260nw-654967474.jpg");
+                height: 600;
+                background-size: cover;
+            }
+            /*birthday cake*/
+            .cake{
+                height: 600;
+                background-image: url("https://media.istockphoto.com/photos/birthday-cake-decorated-with-colorful-sprinkles-and-ten-candles-picture-id1136810581?k=20&m=1136810581&s=612x612&w=0&h=Jj80oUK2CtY9nwYYRfJXB31ydjhOo5igRolQn-lV8M0=");
+                background-size: cover;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="section2">
+                <div class="navbar">
+                    <ul>
+                        <li><a href="#string">String</a></li>
+                        <li><a href="#bmi">BMI Calculator</a></li>
+                        <li><a href="#fruit">Fruit Farm</a></li>
+                        <li><a href="#currency">Currency convetor</a></li>
+                        <li><a href="#coin">Coin Flip</a></li>
+                        <li><a href="#cake">Birthday Cake</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        
+
+        <section id="string">
+            <div class="strin">
+                <div class="upcontainer">
+                    <label><b>Enter a String</b></label>
+                    <input type="text" placeholder="Kindly enter more than two letter..." id="nstring">          
+                    <button type="submit" onclick="gets()">Get</button>
+                    <b id="p"></b>
+                    <script>
+                        function gets(){
+                            var n=document.getElementById('nstring').value
+                            arr=n.split(" ")
+                            var l=arr[0]
+                            var s=arr[0]
+                            for (let i = 1; i < arr.length; i++) {
+                                if(l.length<arr[i].length){
+                                    l=arr[i]
+                                }
+                                if(s.length>arr[i].length){
+                                    s=arr[i]
+                                }
+                            }
+                            if(s.length==l.length){
+                                document.getElementById("p").innerHTML="you typed words with same length"
+                            }else{
+                                document.getElementById("p").innerHTML="Shortest word : "+s+"<br> Largest word : "+l; 
+                            }
+                            
+                        }
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <div class="spacer"></div>
+        
+        <section id="bmi">
+            <div class="bmic">
+                <div class="upcontainer">
+                    <h1>Calculate your BMI</h1>
+                <fieldset>
+                    <label><b>Weight (in kilograms):</b></label>
+                    <input type="text" placeholder="Enter Your weight..." id="weight">          
+                    <label><b>Height (in meters):</b></label>
+                    <input type="text" placeholder="Enter your height..." id="height">          
+                    <button type="submit" onclick="calculate()">Get</button>
+                </fieldset>
+                <script>
+                    function calculate(){
+                        he=document.getElementById('height').value
+                        we=document.getElementById('weight').value
+                        bmi=we/(he*he)
+                        document.getElementById('score').innerHTML=bmi
+                        if(bmi<18){
+                            document.getElementById('type').innerHTML="Under weight"
+                        }else if(bmi>=18 && bmi<25){
+                            document.getElementById('type').innerHTML="Normal"
+                        }else if(bmi>25 && bmi<30){
+                            document.getElementById('type').innerHTML="Over Weight"
+                        }else{
+                            document.getElementById('type').innerHTML="obese"
+                        }
+                    }
+                </script>
+                <p>
+                    Your BMI is <span id="score"></span><br>
+                    Your body type is <span id="type"></span>
+                </p>
+                </div>
+            </div>
+        </section>
+        <div class="spacer"></div>
+        <section id="fruit">
+            <div class="farm">
+                <div class="upcontainer">
+                    <h1>Fruit Farm</h1>
+                    Rows : <input type="text" id="rows"><br>
+                    Columns : <input type="text" id="columns"><br>
+                    Select Image : <select name="fruits" id="fruitname">
+                        <option value="apple">apple</option>
+                        <option value="orange">orange</option>
+                        <option value="grapes">grapes</option>
+                        <option value="watermelon">watermelon</option>
+                      </select>    
+                    <button onclick="grow()">Plant Garden</button>
+
+                    <script>
+                        function grow()
+                        {
+                            document.getElementById("garden").innerHTML="";
+                            var arr=["https://www.floristwide.com/images/grapes_purple2.jpg",
+                            "https://th.bing.com/th/id/OIP.FthJ-z02VBX7EtbQg4kCswAAAA?pid=ImgDet&w=280&h=280&rs=1",
+                            "https://media.istockphoto.com/photos/red-apple-picture-id495878092?b=1&k=20&m=495878092&s=170667a&w=0&h=bJgILGFxOka0ymPlgilH8qaRxFhKole_M6IiYs6RyGM=",
+                            "https://th.bing.com/th/id/OIP.zGFVEE7eTrLrkVyKhmByZQHaE8?pid=ImgDet&rs=1"];
+                            var n=document.getElementById('fruitname').value;
+        
+                            switch(n){
+                                case "grapes":
+                                var choice=arr[0];
+                                break;
+                                case "orange":
+                                var choice=arr[1];
+                                break;
+                                case "apple":
+                                var choice=arr[2];
+                                break;
+                                case "watermelon":
+                                var choice=arr[3];
+                                break;                 
+                            }
+
+                            var r=parseInt(document.getElementById("rows").value);
+                            var c=parseInt(document.getElementById("columns").value);
+                            
+                            for(var i=0;i<r;i++){
+                                for(var j=0;j<c;j++){
+                                    document.getElementById("garden").innerHTML += "<img src="+choice+" width =100px height =100px>";
+                                }
+                                document.getElementById("garden").innerHTML+="<br>";
+                            }
+                        }
+                    </script>
+                    <div id="garden"></div>
+                </div>
+                
+            </div>
+            
+        </section>
+        <div class="spacer"></div>
+        <section id="currency">
+            <div class="currency">
+                <div class="upcontainer">
+                    <fieldset>
+                        <h1>convert</h1>
+                        <input type="text" id="data">
+                        <label for="fromc">Choose from currency</label>
+                        <select id="from" name="fromc">
+                            <option value="Rupees">Rupees</option>
+                            <option value="Dollar">Dollar</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label for="for toc">Choose to currency </label>
+                        <select id="to" name="toc">
+                            <option value="Rupees">Rupees</option>
+                            <option value="Dollar">Dollar</option>
+                        </select>
+                        <button onclick="convert()">Calculate</button>
+                        <p>Your have : <span id="answer"></span></p>
+                    </fieldset>
+                    <script>
+                        function convert(){
+                            if(document.getElementById('from').value=="Rupees"){
+                                document.getElementById("answer").innerHTML=document.getElementById('data').value*0.013+document.getElementById("to").value;
+                            }else{
+                                document.getElementById("answer").innerHTML=document.getElementById('data').value*74.97+document.getElementById("to").value;
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </section>
+        <div class="spacer"></div>
+        <section id="coin">
+            <div class="coin">
+                <div class="upcontainer">
+                    <fieldset>
+                        <h1>Heads or Tails?</h1>
+                        <img src="https://th.bing.com/th/id/OIP.hwWgHzv9g5PtvDMUI1jMQAHaHe?w=215&h=218&c=7&r=0&o=5&pid=1.7" alt="" height="200px" width="300px" id="coinht"><br>
+                        <button id="flip">Flip!</button>
+                        <p>Heads Total: <span id="num_heads">0</span><br>Tails Total: <span id="num_tails">0</span></p>
+                        <script>
+                            document.getElementById("flip").addEventListener("click",flipfunction);
+                            var h=0;
+                            var t=0;
+                            function flipfunction(){
+                                var arr=["https://th.bing.com/th/id/OIP.3erSwCHVpE7RoxjkRH0EzgHaHa?pid=ImgDet&rs=1","https://en.numista.com/catalogue/photos/inde/2466-original.jpg"];
+                                var ran=Math.floor(Math.random()*arr.length)
+                                console.log(ran)
+                                document.getElementById('coinht').src=arr[ran]
+                                if(ran==0){
+                                    h=h+1
+                                    document.getElementById('num_heads').innerHTML=h;
+                                }else{
+                                    t=t+1
+                                    document.getElementById('num_tails').innerHTML=t;
+                                    console.log(h);
+                                }
+                            }
+                        </script>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+        <div class="spacer"></div>
+        <section id="cake">
+            <div class="cake">
+                <div class="upcontainer">
+                    <h1>Pizza Order Form</h1>
+                    <fieldset>                        
+                        # of 1/2kg Cakes <input type="text" id="small" ><br >
+                        # of 1kg Cakes <input type="text" id="medium" ><br >
+                        # of 2kg Cakes <input type="text" id="large" ><br >
+                        Tip:
+                        <label><input type="radio" value="10" name="tip" > 10%</label>
+                        <label></label><input type="radio" value="15" name="tip" checked="checked"> 15% </label>
+                        <label></label><input type="radio" value="20" name="tip"> 20%</label><br >
+                        <button id="submit" onclick="costcal()">Calculate Order</button>
+                        <script>
+                            function costcal(){
+                                var price_Cake=(document.getElementById("small").value*100)+(document.getElementById("medium").value*200)+(document.getElementById("large").value*400);
+                                document.getElementById("price").innerHTML=price_Cake+(price_Cake*9/100)+(price_Cake*(document.querySelector('input[name="tip"]:checked').value)/100);
+                            }
+                        </script>
+                    </fieldset>
+                    <p>Cost of order: <span id="price"></span></p>
+                </div>
+            </div>
+        </section>
+    </body>
+    <footer style="background-color:burlywood; width: 100%; height: 100px;">
+        <p style="padding-left: 20px;">&copy;2021-2022.(URK19CS1177)-Web Technology Lab Batch-4 All rights reserved.</p>
+    </footer>
+</html>
